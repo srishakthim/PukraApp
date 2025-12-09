@@ -338,6 +338,9 @@ const Home: React.FC = () => {
         </View>
       </Modal>
     </ScrollView>
+
+    // Bottom Spacing
+    
   );
 };
 
@@ -441,5 +444,30 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 10,
     marginTop: 10,
+  },
+
+  bottomBar: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    padding: 12,
+    backgroundColor: "#fff",
+    borderTopWidth: 1,
+    borderColor: "#ddd",
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
+  },
+
+  bottomBtn: {
+    backgroundColor: "#0084ff",
+    paddingVertical: 10,
+    paddingHorizontal: 25,
+    borderRadius: 20,
+  },
+
+  bottomBtnText: {
+    color: "#fff",
+    fontWeight: "bold",
   },
 });
