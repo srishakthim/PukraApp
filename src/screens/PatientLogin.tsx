@@ -43,8 +43,9 @@ const PatientLogin: React.FC = () => {
       // Navigate After Login
       navigation.reset({
         index: 0,
-        routes: [{ name: "PatientDashboard" }],
+        routes: [{ name: "Main" }],
       });
+      
     } catch (err: any) {
       console.error(err);
       Alert.alert(
