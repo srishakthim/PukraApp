@@ -3,7 +3,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import API_URLS from "../config/API_URLS";
 import { Alert } from "react-native";
 
-// Axios Instance
 const Api = axios.create({
   baseURL: API_URLS.BASE_URL,
   headers: {
@@ -12,7 +11,7 @@ const Api = axios.create({
   },
 });
 
-// TOKEN INTERCEPTOR (React Native Safe Storage)
+// ✅ Attach Patient Token
 Api.interceptors.request.use(
   async (config) => {
     const token = await AsyncStorage.getItem("patientToken");
@@ -26,17 +25,13 @@ Api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// NETWORK ERROR HANDLER
+// Server / Network Error Handler
 Api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (!error.response) {
       console.error("Network/Server error:", error);
-      Alert.alert(
-        "Network Error",
-        "Unable to connect to the server. Please check your internet connection and try again."
-      );
-      return;
+      Alert.alert("Network/Server error", "Please try again later.");
     }
 
     return Promise.reject(error);
